@@ -1,0 +1,85 @@
+<DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="utf-8">
+<title> home</title>
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Julius+Sans+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Sarabun&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+        <div class="hcontainer">
+        <div class="myheader">
+		<p>plant <span>it</span></p>
+		<ul class="list1">
+   	    <li id="home"><a href="#">HOME </a></li>
+	    	<li>
+		
+	      	<div class="dropdown">
+    
+	
+                <button class="dropbtn">PLANTING ▼
+                  <i class="fa fa-caret-down"></i>
+                 </button>
+                  <div class="dropdown-content">
+                     <a href="temperate.html">temperate climate</a>
+                     <a href="dry.html">dry climate</a>
+                     <a href="mediterranean.html">mediterranean climate</a>
+	                 <a href="indoor_planting.html">indoor planting</a>
+                 </div>
+            </div>
+		   </li>
+		 <li><a href="vision.html">OUR VISION</a></li>
+  
+		 <li><a href="contacts.html">CONTACT US</a></li>
+		
+		</ul>
+		</div>
+	
+          <div class="mysidebar"><div class="home-gif"><img src="img/output.gif" alt="Go Green"><img src="img/output1.gif" alt="Go Planting"></div> 
+		  <div><p id="welcome">Welcome to our website ! <br>here you'll find some instructions that will facilitate the process of growing plants for every possible condition. </p></div>
+		  </div>
+           <div class="myhomecontent"><br>
+		    <div class="galleryContainer">
+    <div class="slideShowContainer">
+        <div id="playPause" onclick="playPauseSlides()"></div>
+        <div onclick="plusSlides(-1)" class="nextPrevBtn leftArrow"><span class="arrow arrowLeft"></span></div>
+        <div onclick="plusSlides(1)" class="nextPrevBtn rightArrow"><span class="arrow arrowRight"></span></div>
+        <div class="captionTextHolder"><p class="captionText slideTextFromTop"></p></div>
+	
+        <div class="imageHolder">	
+         <img src="img/1.jpg" alt="photo of temperate climate area ">
+            <p class="captionText"></p>
+        </div>
+        <div class="imageHolder">
+           <img src="img/2.jpg" alt="photo of dry climate area ">
+            <p class="captionText"></p>
+        </div>
+        <div class="imageHolder">
+            <img src="img/3.jpg" alt="photo of mediterranean climate area ">
+            <p class="captionText"></p>
+        </div>
+        <div class="imageHolder">
+            <img src="img/4.jpg" alt="photo resembling indoor_planting ">
+            <p class="captionText"></p>
+        </div>
+    </div>
+    <div id="dotsContainer"></div>
+</div>
+<br><br><br><br>
+		   </div>
+	
+        <div class="myhomefooter"><p id="demo"></p></div>
+	
+</div>
+
+<script  src="time.js" ></script>
+<script  src="myScript.js" ></script>
+</body>
+
+</html>
+ 

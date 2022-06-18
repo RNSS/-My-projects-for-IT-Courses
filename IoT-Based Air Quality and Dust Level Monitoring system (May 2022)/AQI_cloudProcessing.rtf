@@ -1,0 +1,188 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red31\green124\blue26;\red0\green0\blue0;\red140\green0\blue236;
+\red0\green0\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c13333\c54510\c13333;\cssrgb\c0\c0\c0;\cssrgb\c62745\c12549\c94118;
+\cssrgb\c0\c0\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs28 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 %locate data \cf0 \strokec3 \
+Pollutants_ChannelID = 1726321;\
+Pollutants_readAPIKey = \cf4 \strokec4 'OB9KHUCZHY8QE5VM'\cf0 \strokec3 ;\
+Pollutants_WriteKey = \cf4 \strokec4 'LTOF7TBMME20KGJ6'\cf0 \strokec3 ;\
+\cf2 \strokec2 %%% \cf0 \strokec3 \
+Averges_ChannelID = 1675270;\
+Averges_readAPIKey = \cf4 \strokec4 '2Q378BIQWO7XFB3R'\cf0 \strokec3 ;\
+Averges_WriteKey = \cf4 \strokec4 'CYPM3LK5TX915LP6'\cf0 \strokec3 ;\
+\cf2 \strokec2 %%%\cf0 \strokec3 \
+AQI_ChannelID = 1698133;\
+AQI_readAPIKey = \cf4 \strokec4 '6ZQP808KU9FXB401'\cf0 \strokec3 ;\
+AQI_WriteKey = \cf4 \strokec4 'ILU09B0IVBI97CDN'\cf0 \strokec3 ;\
+\
+\
+\cf2 \strokec2 %% Read Data\cf0 \strokec3 \
+\
+\
+\cf2 \strokec2 %PM2.5 data\cf0 \strokec3 \
+[PM25_rawData,PM25_time]= thingSpeakRead(Pollutants_ChannelID, \cf4 \strokec4 'Field'\cf0 \strokec3 , 4,\cf5 \strokec5 ...\cf0 \strokec3 \
+    \cf4 \strokec4 'NumMinutes'\cf0 \strokec3 , 1440,\cf4 \strokec4 'ReadKey'\cf0 \strokec3 , Pollutants_readAPIKey); \
+\
+\
+rowIdx = find(isnan(PM25_rawData));\
+PM25_time(rowIdx) = [];\
+PM25_rawData = PM25_rawData(~isnan(PM25_rawData));\
+PM25_localTime = PM25_time + hours(3); \
+\
+\
+\cf2 \strokec2 %PM10 data\cf0 \strokec3 \
+[PM10_rawData,PM10_time]= thingSpeakRead(Pollutants_ChannelID, \cf4 \strokec4 'Field'\cf0 \strokec3 , 5,\cf5 \strokec5 ...\cf0 \strokec3 \
+    \cf4 \strokec4 'NumMinutes'\cf0 \strokec3 , 1440,\cf4 \strokec4 'ReadKey'\cf0 \strokec3 , Pollutants_readAPIKey); \
+\
+\
+rowIdx = find(isnan(PM10_rawData));\
+PM10_time(rowIdx) = [];\
+PM10_rawData = PM10_rawData(~isnan(PM10_rawData));\
+PM10_localTime = PM10_time + hours(3); \
+\
+\
+\cf2 \strokec2 %CO, 8 Hours data\cf0 \strokec3 \
+[CO_8h_rawData,CO_8h_time]= thingSpeakRead(Pollutants_ChannelID, \cf4 \strokec4 'Field'\cf0 \strokec3 , 6,\cf5 \strokec5 ...\cf0 \strokec3 \
+    \cf4 \strokec4 'NumMinutes'\cf0 \strokec3 , 480, \cf4 \strokec4 'ReadKey'\cf0 \strokec3 , Pollutants_readAPIKey); \
+\
+\
+rowIdx = find(isnan(CO_8h_rawData));\
+CO_8h_time(rowIdx) = [];\
+CO_8h_rawData = CO_8h_rawData(~isnan(CO_8h_rawData));\
+CO_8h_localTime = CO_8h_time + hours(3);\
+\
+\
+\cf2 \strokec2 %% Find subAQI\cf0 \strokec3 \
+\
+\
+\cf2 \strokec2 %------------ 24 Hours average\cf0 \strokec3 \
+\
+\
+return_PM25 = main(PM25_localTime,PM25_rawData,1)\
+return_PM10 = main(PM10_localTime,PM10_rawData,2)\
+\
+\
+\cf2 \strokec2 %------------ 8 Hours average\cf0 \strokec3 \
+return_CO_8h = main(CO_8h_localTime,CO_8h_rawData,3);\
+\cf2 \strokec2 %% - Averges SAVED in ThingSpeak Channel\cf0 \strokec3 \
+\
+\
+thingSpeakWrite(Averges_ChannelID,\cf4 \strokec4 'Fields'\cf0 \strokec3 ,[1],\cf4 \strokec4 'Values'\cf0 \strokec3 ,\{return_CO_8h\},\cf4 \strokec4 'WriteKey'\cf0 \strokec3 ,Averges_WriteKey);\
+\
+\
+\cf2 \strokec2 % ------------ max 8 Hours saved averages\cf0 \strokec3 \
+\cf2 \strokec2 % ----CO-----\cf0 \strokec3 \
+\
+\
+[ALL_CO_8h,ALL_CO_8h_time] =thingSpeakRead(Averges_ChannelID, \cf4 \strokec4 'Field'\cf0 \strokec3 , 1,\cf5 \strokec5 ...\cf0 \strokec3 \
+    \cf4 \strokec4 'NumMinutes'\cf0 \strokec3 , 1440, \cf4 \strokec4 'ReadKey'\cf0 \strokec3 , Averges_readAPIKey); \
+rowIdx = find(isnan(ALL_CO_8h));\
+ALL_CO_8h_time(rowIdx) = [];\
+ALL_CO_8h = ALL_CO_8h(~isnan(ALL_CO_8h));\
+\cf2 \strokec2 %ALL_CO_8h_localTime = ALL_CO_8h_time + hours(3);\cf0 \strokec3 \
+Max_CO_8h= max(ALL_CO_8h)\
+\
+\
+\cf2 \strokec2 %% AQI & matlab plot \cf0 \strokec3 \
+\cf2 \strokec2 %---------AQI----------\cf0 \strokec3 \
+return_AQI = max([return_PM25 return_PM10  Max_CO_8h ]) \cf2 \strokec2 % Max_O3_8h Max_O3_1h Max_NO2_1h\cf0 \strokec3 \
+thingSpeakWrite(AQI_ChannelID,return_AQI,\cf4 \strokec4 'WriteKey'\cf0 \strokec3 ,AQI_WriteKey,\cf4 \strokec4 'Fields'\cf0 \strokec3 ,1);\
+linkdata \cf4 \strokec4 on\cf0 \strokec3 \
+plotfun(return_AQI)\
+\cf2 \strokec2 %Functions: -\cf0 \strokec3 \
+\cf2 \strokec2 %main\cf0 \strokec3 \
+\
+\
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf5 \strokec5 function \cf0 \strokec3 return_subAQI = main(localTime,rawData,pollutant)\
+smoothData = movmedian(rawData,10);\
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \strokec2 % Combine smoothed data with time as # of elements are the same\cf0 \strokec3 \
+smoothDataTable = table(localTime,smoothData,\cf4 \strokec4 'VariableNames'\cf0 \strokec3 ,\{\cf4 \strokec4 'Time'\cf0 \strokec3 ,\cf4 \strokec4 'Concentration'\cf0 \strokec3 \});\
+\
+\
+\cf2 \strokec2 % Calculate AQI\cf0 \strokec3 \
+data_mean = round(mean(smoothDataTable\{:,2\}),1); \cf2 \strokec2 % in general mean of data_observed\cf0 \strokec3 \
+return_subAQI = breakpoints(data_mean,pollutant);\
+\pard\pardeftab720\partightenfactor0
+\cf5 \strokec5 end\cf0 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \strokec2 %% Breakpoints\cf0 \strokec3 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf5 \strokec5 function \cf0 \strokec3 result = breakpoints(data_mean,pollutant)\
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \strokec2 %AQI - levels\cf0 \strokec3 \
+aqiLow  = [0;51;101;151;201;301];\
+aqiHigh = [50;100;150;200;300;500];\
+\
+\
+table_AQI = table(aqiLow,aqiHigh, \cf5 \strokec5 ...\cf0 \strokec3 \
+    \cf4 \strokec4 'VariableNames'\cf0 \strokec3 ,\{\cf4 \strokec4 'AQI_low'\cf0 \strokec3 ,\cf4 \strokec4 'AQI_high'\cf0 \strokec3 \});\
+\cf2 \strokec2 %brakpoints\cf0 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \strokec5 if \cf0 \strokec3 (pollutant == 1)\
+	   PM25_Low = [0;12.1;35.5;55.5;150.5;250.5];\
+    PM25_High = [12;35.4;55.4;150.4;250.4;99999];\
+    table_PM25 = table(PM25_Low,PM25_High,\cf5 \strokec5 ...\cf2 \strokec2  \cf0 \strokec3 \
+    \cf4 \strokec4 'VariableNames'\cf0 \strokec3 ,\{\cf4 \strokec4 'low'\cf0 \strokec3 ,\cf4 \strokec4 'high'\cf0 \strokec3 \});\
+    result = equation(data_mean,table_AQI,table_PM25);\
+\cf5 \strokec5 elseif \cf0 \strokec3 (pollutant == 2)\
+    PM10_Low = [0;55;155;255;355;425];\
+    PM10_High = [54;154;254;354;424;99999];\
+    table_PM10 = table(PM10_Low,PM10_High,\cf5 \strokec5 ...\cf0 \strokec3 \
+        \cf4 \strokec4 'VariableNames'\cf0 \strokec3 ,\{\cf4 \strokec4 'low'\cf0 \strokec3 ,\cf4 \strokec4 'high'\cf0 \strokec3 \});\
+    result = equation(data_mean,table_AQI,table_PM10);\
+\cf5 \strokec5 elseif \cf0 \strokec3 (pollutant == 3)\
+    CO_8h_Low = [0;4.5;9.5;12.5;15.5;30.5];\
+    CO_8h_High = [4.4;9.4;12.4;15.4;30.4;99999];\
+    table_CO_8h = table(CO_8h_Low,CO_8h_High,\cf5 \strokec5 ...\cf0 \strokec3 \
+        \cf4 \strokec4 'VariableNames'\cf0 \strokec3 ,\{\cf4 \strokec4 'low'\cf0 \strokec3 ,\cf4 \strokec4 'high'\cf0 \strokec3 \});\
+    result = equation(data_mean,table_AQI,table_CO_8h);\
+\cf5 \strokec5 end\cf0 \strokec3 \
+\cf5 \strokec5 end\cf0 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \strokec2 % sub-AQI Equation\cf0 \strokec3 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf5 \strokec5 function \cf0 \strokec3 result = equation(data_mean,table_AQI,table_pollution)\
+    rowIdx = find(data_mean >= table_pollution.low & data_mean <= table_pollution.high);\
+		conc_min = table_pollution.low(rowIdx);\
+		conc_max = table_pollution.high(rowIdx);\
+		AQI_min = table_AQI.AQI_low(rowIdx);\
+		AQI_max = table_AQI.AQI_high(rowIdx);\
+\
+\
+		result = round((((data_mean - conc_min) .* (AQI_max - AQI_min))/(conc_max - conc_min)) + AQI_min);\
+\cf5 \strokec5 end\cf0 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \strokec2 %% Plot Data\cf0 \strokec3 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf5 \strokec5 function \cf0 \strokec3 plotfun(rawData)\
+		hold \cf4 \strokec4 on\cf0 \strokec3 \
+		plot(rawData,\cf4 \strokec4 "-*"\cf0 \strokec3 );\
+		title(\cf4 \strokec4 'AQI'\cf0 \strokec3 )\
+		xlabel(\cf4 \strokec4 'Time'\cf0 \strokec3 );\
+		ylabel(\cf4 \strokec4 'Concentration \\mug/m^\{3\}'\cf0 \strokec3 );\
+		legend(\cf4 \strokec4 'Collected data'\cf0 \strokec3 ,\cf4 \strokec4 'Location'\cf0 \strokec3 ,\cf4 \strokec4 'best'\cf0 \strokec3 )\
+		axis \cf4 \strokec4 tight\cf0 \strokec3 \
+		hold \cf4 \strokec4 off\cf0 \strokec3 \
+\cf5 \strokec5 end\cf0 \strokec3 \
+}

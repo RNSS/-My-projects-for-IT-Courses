@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.Diary">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/diary"
+        android:label="My Diary"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Test">
+        <activity android:name="com.example.Diary.Update"></activity>
+        <activity android:name="com.example.Diary.profile" />
+        <activity android:name="com.example.Diary.Add"></activity>
+        <activity android:name="com.example.Diary.register" />
+        <activity android:name="com.example.Diary.ForgotPassword"/>
+        <activity android:name="com.example.Diary.Home"/>
+        <activity android:name="com.example.Diary.SingIn">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,215 @@
+<style id= "applicationStylesheet"
+type= "text/css" >
+:root {
+--web-view-ids : log_in_;
+}
+* {
+margin : 0 ;
+padding : 0 ;
+box-sizing : border-box;
+border : none;
+}
+.background {
+background : url ( 'library.jpg' );
+background-size : 2100px 1176px ;
+background-repeat : no-repeat;
+}
+#ID1 {
+position : absolute;
+width : 30% ;
+left : 35% ;
+top : 30px ;
+overflow : visible;
+}
+.Rectangle_2 {
+position : absolute;
+overflow : visible;
+width : 610px ;
+height : 358px ;
+left : 30% ;
+top : 409px ;
+}
+#Rectangle_2 {
+fill : #f0f0f5 ;
+opacity : 0.85 ; }
+#Rectangle_6 {
+fill : rgba (255,255,255,1);
+opacity : . 85 ;
+}
+.Rectangle_6 {
+position : absolute;
+overflow : visible;
+width : 610px ;
+height : 104px ;
+left : 30% ;
+top : 409px ;
+}
+#log_in__p {
+left : 45.5% ;
+top : 435px ;
+position : absolute;
+overflow : visible;
+width : 128px ;
+white-space : nowrap;
+text-align : left;
+font-family : PMingLiU-ExtB;
+font-style : normal;
+font-weight : normal;
+font-size : 52px ;
+color : #666666 ;
+}
+#Rectangle_5 {
+fill : rgba (255,255,255,1);
+}
+.Rectangle_5 {
+position : absolute;
+overflow : visible;
+width : 337px ;
+height : 50px ;
+left : 37% ;
+top : 545px ;
+}
+#username_ {
+left : 40% ;
+top : 551px ;
+position : absolute;
+overflow : visible;
+width : 105px ;
+white-space : nowrap;
+text-align : left;
+font-family : Traditional
+Arabic;
+font-style : normal;
+font-weight : normal;
+font-size : 26px ;
+color :
+rgba (168,165,165,0.271);
+}
+#Rectangle_4 {
+fill : rgba (255,255,255,1);
+}
+.Rectangle_4 {
+    position : absolute;
+    overflow : visible;
+    width : 337px ;
+    height : 50px ;
+    left : 37% ;
+    top : 622px ;
+    }
+    #Password_ {
+    left : 40% ;
+    top : 631px ;
+    position : absolute;
+    overflow : visible;
+    width : 96px ;
+    white-space : nowrap;
+    text-align : left;
+    font-family : Traditional
+    Arabic;
+    font-style : normal;
+    font-weight : normal;
+    font-size : 26px ;
+    color :
+    rgba (168,165,165,0.231);
+    }
+    #Mask_Group_1 {
+    position : absolute;
+    width : 24px ;
+    height : 25px ;
+    left : 38% ;
+    top : 553px ;
+    overflow : visible;
+    }
+    #Mask_Group_2 {
+    position : absolute;
+    width : 16px ;
+    height : 24px ;
+    left : 38% ;
+    top : 634px ;
+    overflow : visible;
+    }
+    #Rectangle_10 {
+    fill :
+    rgba (255,255,255,0.702);
+    }
+    #Rectangle_11 {
+    fill : rgba (255,255,255,1);
+    }
+    .Rectangle_11 {
+    position : absolute;
+    overflow : visible;
+    width : 101px ;
+    height : 31px ;
+    left : 43% ;
+    top : 701px ;
+    }
+    #log_in__z {
+    left : 45% ;
+    top : 707px ;
+    position : absolute;
+    overflow : visible;
+    width : 48px ;
+    white-space : nowrap;
+    text-align : left;
+    font-family : PMingLiU-ExtB;
+    font-style : normal;
+    font-weight : normal;
+    font-size : 19px ; }
+    h2 {
+    text-align : center;
+    margin-top : 10% ;
+    margin-bottom : 5% ;
+    font-family : Impact, Charcoal,
+    sans-serif;
+    font-size : 40px ;
+    background : #f0f0f5 ;
+    opacity : 0.85 ;
+    padding : 20px ;
+    }
+    h2 .library_middle {
+    margin-top : 14% ;
+    color : #666666 ;
+    font-family : PMingLiU-ExtB;
+    font-style : normal;
+    font-weight : normal;
+    font-size : 52px ;
+    }
+    table {
+        margin : 20 ;
+        background : #948473 ;
+        text-align : center;
+        }
+        table .cinereousTable {
+        background-color : #FFE3C6 ;
+        width : 100% ;
+        text-align : center;
+        }
+        table .cinereousTable thead {
+        padding : 7px 6px ;
+        background : #948473 ;
+        font-size : 20px ;
+        font-weight : bold;
+        color : #F0F0F0 ;
+        }
+        table .cinereousTable th {
+        padding : 22px 22px ;
+        font-family : Charcoal, sans-serif;
+        }
+        table .cinereousTable tbody {
+        background : #F0F0F0 ; }
+        table .cinereousTable tbody td {
+        font-size : 13px ;
+        padding : 9px 8px ;
+        font-family : Charcoal, sans-serif;
+        }
+        #rcorners1 {
+        border-radius : 25px ;
+        background : #f0f0f5 ;
+        opacity : 0.85 ;
+        padding : 20px ;
+        position : fixed;
+        margin-left : 25% ;
+        margin-top : 5% ;
+        font-family : Impact, Charcoal, sans-serif;
+        }
+        </style>

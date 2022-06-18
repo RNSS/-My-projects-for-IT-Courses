@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".Update"
+    android:background="@drawable/add">
+    <RelativeLayout
+        android:id="@+id/action_bar"
+        android:layout_width="0dp"
+        android:layout_height="?actionBarSize"
+        android:layout_marginBottom="621dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="#FFFFFF"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:text="Edit Your Daily Diary"
+            android:textColor="#3B365F"
+            android:textAlignment="center"
+            android:textSize="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/back"
+            android:backgroundTint="#44CFA6"
+            android:onClick="back"
+            android:textColor="@android:color/black"
+            app:backgroundTint="@color/jade"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        />
+
+    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="303dp"
+            android:layout_height="373dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginBottom="200dp"
+            android:background="@drawable/round_white"
+            android:gravity="top"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/action_bar"
+            app:layout_constraintVertical_bias="1.0">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Update diary"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edTitel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="New Title"
+                android:layout_margin="20dp"
+                android:ems="10"
+                android:hint="Title"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <EditText
+                android:id="@+id/edDiary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="New diary"
+                android:layout_margin="20dp"
+                android:ems="10"
+                android:hint="Text"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+            <EditText
+                android:id="@+id/edAdditional"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="New additonal"
+                android:layout_margin="20dp"
+                android:ems="10"
+                android:hint="Additional Details"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <Button
+                android:id="@+id/updatebtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="75dp"
+                android:layout_marginTop="15px"
+                android:background="@drawable/resetbtn"
+                android:backgroundTint="#44CFA6"
+                android:text="Update Diary!"
+                android:textColor="#3B365F"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                app:backgroundTint="@color/jade"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.52" />
+
+        </LinearLayout>
+    <Button
+        android:id="@+id/PprofileBtn"
+        android:layout_width="149dp"
+        android:layout_height="57dp"
+        android:backgroundTint="#3B365F"
+        android:text="profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/PaddBtn"
+        android:layout_width="149dp"
+        android:layout_height="57dp"
+        android:backgroundTint="#3B365F"
+        android:text="ADD +"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/PhomeBtn"
+        android:layout_width="150dp"
+        android:layout_height="57dp"
+        android:backgroundTint="#3B365F"
+        android:text="home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
