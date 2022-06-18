@@ -1,0 +1,1 @@
+During my four years of study at Qassim University, and with the help of my colleagues, I have done many projects related to designing a system, programming with many languages like python and java, building databases, and creating a website, and more. This link shows The projects we’ve done.
